@@ -756,8 +756,22 @@ echo "Testing Management UI port"
 2. Type the Prompt 
   "Design Functional Test Cases for User Story attached herewith using Instructions attached. The URl of the application is <"UR Appllication URL">. Also attach User UserStory-01-Browse-Products from Functional User Stories Folder and FunctionalTestInstructions from the Instructions File For Testing Folder.
    ![alt text](image-1.png)
-3. 
+3. Once the Prompt execution is complete, then you will see the Functional Test Cases generated in CSV as well as JSON folder inside Functional Test Cases Folder.
+    ![alt text](image-2.png) 
 
+
+# Exercise 6: Test Automation Using PlayWright MCP Server - Write Automation Test Cases for the User Stories for the solution
+
+1. Check if Playwright MCP Server is added
+   a. Click on Tools in Chat Window
+      ![alt text](image-3.png) 
+   b. In the dropdown for that Opens, make sure the PlayWright MCP server is available and shows as selected.
+      ![alt text](image-4.png)
+ 2. If PlayWright MCP Server is not added
+   a. Press Ctrl+Shift+P and then type MCP: open User Configuration     
+      ![alt text](image-5.png)
+   b.    
+   
 
 # Bonus Exercise: CI/CD with GitHub Actions
 
