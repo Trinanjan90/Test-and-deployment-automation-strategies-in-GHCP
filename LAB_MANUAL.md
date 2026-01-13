@@ -750,413 +750,81 @@ echo "Testing Management UI port"
 
 ---
 
-# Exercise 5: Test Automation Strategies with GitHub Copilot
-
-In this exercise, you'll learn how to use GitHub Copilot Agent Mode to create automated test scripts, implement continuous monitoring, and build troubleshooting automation for your Kubernetes applications.
+# Bonus Exercise: CI/CD with GitHub Actions
 
 <details>
-<summary><b>Step 1: Check Application Logs using GitHub Copilot</b></summary>
-
-1. Ask GitHub Copilot:
-
-```
-@terminal Show me the logs for all store-front pods
-```
-
-2. Copilot should suggest:
-
-```bash
-kubectl logs -l app=store-front --tail=50
-```
-
-3. For real-time log streaming, ask:
-
-```
-@terminal Stream logs from the order-service in real-time
-```
-
-Expected command:
-
-```bash
-kubectl logs -f deployment/order-service
-```
-
-4. To see logs from multiple containers, ask:
-
-```
-@terminal Show logs from all pods with label app=order-service including previous restarts
-```
-
-Copilot might suggest:
-
-```bash
-kubectl logs -l app=order-service --all-containers=true --previous=true
-```
-
-</details>
-
-<details>
-<summary><b>Step 2: Describe Resources using GitHub Copilot</b></summary>
-
-1. Ask Copilot:
-
-```
-@terminal Show me detailed information about the rabbitmq statefulset
-```
-
-2. Copilot should suggest:
-
-```bash
-kubectl describe statefulset rabbitmq
-```
-
-3. To understand why a pod might be failing, ask:
-
-```
-@terminal How do I troubleshoot a pod that's in CrashLoopBackOff state?
-```
-
-Copilot will provide a troubleshooting guide:
-
-```bash
-# Check pod status
-kubectl get pods
-
-# Describe the pod
-kubectl describe pod <pod-name>
-
-# Check logs
-kubectl logs <pod-name> --previous
-
-# Check events
-kubectl get events --sort-by=.metadata.creationTimestamp
-```
-
-</details>
-
-<details>
-<summary><b>Step 3: Scale Services using GitHub Copilot</b></summary>
-
-1. Ask Copilot:
-
-```
-@terminal Scale the store-front deployment to 3 replicas
-```
-
-2. Copilot should suggest:
-
-```bash
-kubectl scale deployment store-front --replicas=3
-```
-
-3. Verify the scaling:
-
-```bash
-kubectl get deployment store-front
-kubectl get pods -l app=store-front
-```
-
-4. Ask Copilot about autoscaling:
-
-```
-@terminal Set up horizontal pod autoscaling for order-service with min 2, max 10 replicas based on 70% CPU utilization
-```
-
-Expected command:
-
-```bash
-kubectl autoscale deployment order-service --min=2 --max=10 --cpu-percent=70
-```
-
-</details>
-
-<details>
-<summary><b>Step 4: Update Application using GitHub Copilot</b></summary>
-
-1. Ask Copilot:
-
-```
-@terminal How do I update the order-service to use a new image version?
-```
-
-2. Copilot will suggest:
-
-```bash
-kubectl set image deployment/order-service order-service=ghcr.io/azure-samples/aks-store-demo/order-service:v2.0.0
-```
-
-3. Watch the rollout:
-
-```bash
-kubectl rollout status deployment/order-service
-```
-
-4. If something goes wrong, ask Copilot:
-
-```
-@terminal Rollback my order-service deployment to the previous version
-```
-
-Expected command:
-
-```bash
-kubectl rollout undo deployment/order-service
-```
-
-</details>
-
-<details>
-<summary><b>Step 5: Check Resource Usage using GitHub Copilot</b></summary>
-
-1. Ask Copilot:
-
-```
-@terminal Show me CPU and memory usage for all pods
-```
-
-2. Copilot should suggest:
-
-```bash
-kubectl top pods
-```
-
-3. For nodes:
-
-```bash
-kubectl top nodes
-```
-
-4. Ask for more specific information:
-
-```
-@terminal Show resource requests and limits for all deployments
-```
-
-Copilot might provide:
-
-```bash
-kubectl get deployment -o custom-columns=NAME:.metadata.name,CPU_REQ:.spec.template.spec.containers[*].resources.requests.cpu,MEM_REQ:.spec.template.spec.containers[*].resources.requests.memory,CPU_LIM:.spec.template.spec.containers[*].resources.limits.cpu,MEM_LIM:.spec.template.spec.containers[*].resources.limits.memory
-```
-
-</details>
-
-<details>
-<summary><b>Step 6: Debug Network Connectivity using GitHub Copilot</b></summary>
-
-1. Ask Copilot:
-
-```
-@terminal Help me debug why order-service can't connect to rabbitmq
-```
-
-2. Copilot will suggest diagnostic steps:
-
-```bash
-# Check if RabbitMQ pod is running
-kubectl get pod -l app=rabbitmq
-
-# Check RabbitMQ service
-kubectl get svc rabbitmq
-
-# Test DNS resolution from order-service pod
-kubectl exec -it deployment/order-service -- nslookup rabbitmq
-
-# Test port connectivity
-kubectl exec -it deployment/order-service -- nc -zv rabbitmq 5672
-
-# Check RabbitMQ logs
-kubectl logs statefulset/rabbitmq
-```
-
-3. For more complex scenarios, ask:
-
-```
-@terminal Create a debug pod to test network connectivity in my cluster
-```
-
-Copilot might suggest:
-
-```bash
-kubectl run debug-pod --image=nicolaka/netshoot -it --rm -- /bin/bash
-```
-
-</details>
-
-<details>
-<summary><b>Step 7: Export and Backup Configuration using GitHub Copilot</b></summary>
-
-1. Ask Copilot:
-
-```
-@terminal Export all my current Kubernetes resources to YAML files for backup
-```
-
-2. Copilot should provide commands like:
-
-```bash
-# Export all resources
-kubectl get all --all-namespaces -o yaml > all-resources-backup.yaml
-
-# Export specific resources
-kubectl get deployment,service,statefulset -o yaml > app-backup.yaml
-
-# Export with specific namespace
-kubectl get all -n default -o yaml > default-namespace-backup.yaml
-```
-
-3. You can also ask:
-
-```
-@terminal How do I backup my entire cluster configuration?
-```
-
-</details>
-
-<details>
-<summary><b>Step 8: Clean Up Resources using GitHub Copilot</b></summary>
-
-1. When you're done with the lab, ask Copilot:
-
-```
-@terminal Delete all resources created by the aks-store-quickstart.yaml manifest
-```
-
-2. Copilot should suggest:
-
-```bash
-kubectl delete -f aks-store-quickstart.yaml
-```
-
-3. To delete the AKS cluster:
-
-```
-@terminal Delete my AKS cluster and resource group
-```
-
-Expected commands:
-
-```bash
-# Delete the AKS cluster
-az aks delete --resource-group aks-store-rg --name aks-store-cluster --yes --no-wait
-
-# Delete the resource group (this deletes everything)
-az group delete --name aks-store-rg --yes --no-wait
-```
-
-> [!WARNING]
-> Only run these commands if you're completely finished with the lab and want to clean up all resources.
-
-</details>
-
-### Summary
-✅ Created automated test scripts with GitHub Copilot  
-✅ Implemented health check automation  
-✅ Built monitoring and validation scripts  
-✅ Scaled services and managed deployments  
-✅ Debugged connectivity issues efficiently  
-✅ Developed reusable test automation templates  
-
----
-
-# Bonus Exercise: Advanced Test Automation with GitHub Copilot
-
-<details>
-<summary><b>Bonus 1: Create an Automated Monitoring Dashboard</b></summary>
-
-1. Ask GitHub Copilot:
-
-```
-@terminal Create a script that shows an automated test dashboard of all services, their health status, and external IPs for my 4-microservice application
-```
-
-2. Copilot will generate a script like:
-
-```bash
-#!/bin/bash
-
-echo "=========================================="
-echo "  AKS STORE DEMO - AUTOMATED TEST REPORT"
-echo "=========================================="
-echo ""
-
-echo "📊 CLUSTER INFORMATION:"
-kubectl cluster-info | grep -E "Kubernetes|running"
-echo ""
-
-echo "🖥️  NODES STATUS:"
-kubectl get nodes -o custom-columns=NAME:.metadata.name,STATUS:.status.conditions[-1].type,VERSION:.status.nodeInfo.kubeletVersion
-echo ""
-
-echo "📦 DEPLOYMENTS (Expected: 3):"
-kubectl get deployments -o custom-columns=NAME:.metadata.name,READY:.status.readyReplicas,AVAILABLE:.status.availableReplicas,AGE:.metadata.creationTimestamp
-echo ""
-
-echo "📊 STATEFULSETS (Expected: 1 RabbitMQ):"
-kubectl get statefulsets -o custom-columns=NAME:.metadata.name,READY:.status.readyReplicas,AGE:.metadata.creationTimestamp
-echo ""
-
-echo "🌐 SERVICES (Expected: 4):"
-kubectl get svc -o custom-columns=NAME:.metadata.name,TYPE:.spec.type,CLUSTER-IP:.spec.clusterIP,EXTERNAL-IP:.status.loadBalancer.ingress[0].ip,PORTS:.spec.ports[*].port
-echo ""
-
-echo "🐰 PODS STATUS (Expected: 4 Running):"
-kubectl get pods -o custom-columns=NAME:.metadata.name,STATUS:.status.phase,RESTARTS:.status.containerStatuses[0].restartCount,AGE:.metadata.creationTimestamp
-echo ""
-
-echo "✅ HEALTH CHECK SUMMARY:"
-echo "- RabbitMQ: $(kubectl get pod -l app=rabbitmq -o jsonpath='{.items[0].status.phase}')"
-echo "- Order Service: $(kubectl get pod -l app=order-service -o jsonpath='{.items[0].status.phase}')"
-echo "- Product Service: $(kubectl get pod -l app=product-service -o jsonpath='{.items[0].status.phase}')"
-echo "- Store Front: $(kubectl get pod -l app=store-front -o jsonpath='{.items[0].status.phase}')"
-echo ""
-
-echo "=========================================="
-```
-
-</details>
-
-<details>
-<summary><b>Bonus 2: Create an Automated Health Check Script</b></summary>
-
-1. Ask Copilot:
-
-```
-Create a comprehensive automated health check script that tests all endpoints and services in my AKS store demo application including RabbitMQ, order-service, product-service, and store-front
-```
-
-2. Copilot will generate a health check script that validates:
-   - All 4 pods are running (1 RabbitMQ, 3 application services)
-   - RabbitMQ StatefulSet is ready
-   - All services are accessible and have endpoints
-   - RabbitMQ management UI is responding (port 15672)
-   - Order-service health endpoint returns 200 (port 3000/health)
-   - Product-service health endpoint returns 200 (port 3002/health)
-   - Store-front health endpoint returns 200 (port 8080/health)
-   - External LoadBalancer IP is assigned
-   - Application URL is reachable from outside the cluster
-
-3. The script should include:
-   - Color-coded pass/fail indicators
-   - Detailed error messages for failures
-   - Retry logic for transient issues
-   - Summary report at the end
-
-</details>
-
-<details>
-<summary><b>Bonus 3: Generate Kubernetes Resource Reports</b></summary>
-
-1. Ask:
-
-```
-@terminal Create a script that generates a report showing resource utilization, costs, and optimization recommendations
-```
-
-2. Use Copilot to help analyze:
-   - Over-provisioned resources
-   - Under-utilized pods
-   - Cost optimization opportunities
-   - Security recommendations
+<summary><b>Bonus: Create a GitHub Actions Workflow for Automated Deployment</b></summary>
+
+In this bonus exercise, you'll use GitHub Copilot to create a complete CI/CD pipeline that automates the deployment of your AKS Store Demo application using GitHub Actions.
+
+### Objective
+Create a GitHub Actions workflow that:
+- Builds and pushes Docker images to Azure Container Registry (ACR)
+- Deploys the updated images to your AKS cluster
+- Runs automated health checks after deployment
+- Notifies on deployment success or failure
+
+### Instructions
+
+1. **Create the workflow file structure**
+   
+   Ask GitHub Copilot:
+   ```
+   Create a .github/workflows directory structure for a GitHub Actions workflow that deploys a microservices application to Azure Kubernetes Service
+   ```
+
+2. **Generate the CI/CD workflow**
+   
+   Ask GitHub Copilot:
+   ```
+   Create a GitHub Actions workflow that builds Docker images for order-service, product-service, and store-front, pushes them to Azure Container Registry, and deploys to AKS using the aks-store-quickstart.yaml manifest. Include steps for Azure login, ACR authentication, image building with unique tags, updating the Kubernetes manifests with new image tags, and deploying to AKS.
+   ```
+
+3. **Add automated testing steps**
+   
+   Ask GitHub Copilot:
+   ```
+   Add steps to the workflow that verify all pods are running and perform health checks on all services after deployment
+   ```
+
+4. **Configure secrets and environment variables**
+   
+   Ask GitHub Copilot:
+   ```
+   What GitHub secrets and environment variables do I need to configure for this workflow to authenticate with Azure and deploy to AKS? List them with descriptions.
+   ```
+
+5. **Add deployment notifications**
+   
+   Ask GitHub Copilot:
+   ```
+   Add a step to send a Slack notification or create a GitHub issue when the deployment fails
+   ```
+
+6. **Implement rollback capability**
+   
+   Ask GitHub Copilot:
+   ```
+   Add a manual workflow trigger that can rollback the deployment to the previous version if something goes wrong
+   ```
+
+### Challenge Questions
+
+After creating the workflow, ask GitHub Copilot to help you:
+
+- How can I implement a staging environment deployment before production?
+- How can I add approval gates for production deployments?
+- How can I optimize the Docker build process using layer caching?
+- How can I run integration tests between services before deploying?
+- How can I implement blue-green or canary deployments?
+
+### Tips for Success
+
+- Use GitHub Copilot Chat to iteratively refine your workflow
+- Test each component of the workflow separately before combining
+- Use workflow_dispatch trigger for manual testing during development
+- Consider security best practices for storing credentials
+- Implement proper error handling and cleanup steps
 
 </details>
 
@@ -1177,6 +845,12 @@ By completing this lab, you have learned to:
 - ✅ Automate troubleshooting workflows using AI-generated scripts
 - ✅ Scale, update, and manage Kubernetes resources using Copilot Agent Mode
 - ✅ Create reusable test automation templates for Kubernetes applications
+
+## Bonus Achievement (Optional):
+- ✅ Design a complete CI/CD pipeline with GitHub Actions using Copilot
+- ✅ Implement automated Docker image builds and ACR integration
+- ✅ Configure automated deployments to AKS with health validation
+- ✅ Set up deployment notifications and rollback capabilities
 
 ---
 
