@@ -750,6 +750,15 @@ echo "Testing Management UI port"
 
 ---
 
+# Exercise 5: Functional Testing - Write Functional Test Cases for the User Stories for the solution
+1. Open GitHub Copilot Chat Mode and switch to Agent Mode.
+![alt text](image.png)
+2. Type the Prompt 
+  "Design Functional Test Cases for User Story attached herewith using Instructions attached. The URl of the application is <"UR Appllication URL">. Also attach User UserStory-01-Browse-Products from Functional User Stories Folder and FunctionalTestInstructions from the Instructions File For Testing Folder.
+   ![alt text](image-1.png)
+3. 
+
+
 # Bonus Exercise: CI/CD with GitHub Actions
 
 <details>
