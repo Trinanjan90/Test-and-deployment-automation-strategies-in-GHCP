@@ -750,44 +750,82 @@ echo "Testing Management UI port"
 
 ---
 
-# Exercise 5: Functional Testing - Write Functional Test Cases for the User Stories for the solution
-1. Open GitHub Copilot Chat Mode and switch to Agent Mode.
-![alt text](image.png)
-2. Type the Prompt 
-  "Design Functional Test Cases for User Story attached herewith using Instructions attached. The URl of the application is <"UR Appllication URL">. Also attach User UserStory-01-Browse-Products from Functional User Stories Folder and FunctionalTestInstructions from the Instructions File For Testing Folder.
-   ![alt text](image-1.png)
-3. Once the Prompt execution is complete, then you will see the Functional Test Cases generated in CSV as well as JSON folder inside Functional Test Cases Folder.
-    ![alt text](image-2.png) 
+## Exercise 5: Functional Testing
 
+### Goal
+Write Functional Test Cases for the User Stories for the solution.
 
-# Exercise 6: Test Automation Using PlayWright MCP Server - Write Automation Test Scripts for the User Stories for the solution
+### Steps
 
-1. Check if Playwright MCP Server is added
-   a. Click on Tools in Chat Window
-      ![alt text](image-3.png) 
-   b. In the dropdown for that Opens, make sure the PlayWright MCP server is available and shows as selected.
-      ![alt text](image-4.png)
- 2. If PlayWright MCP Server is not added
-   a. Press Ctrl+Shift+P and then type MCP: open User Configuration     
-      ![alt text](image-5.png)
-   b.  Add the below configuration
-       "playwright": {
-			"command": "npx",
-			"args": [
-				"@playwright/mcp@latest"
-			],
-			"type": "stdio"
-		}
-   c. Then click on Run. The same should be clearly seen in tools
-          ![alt text](image-6.png)
+1. **Open GitHub Copilot Chat Mode and switch to Agent Mode.**  
+   ![Chat Mode](image.png)
 
- 3. Create Automation Framework from scratch:
-   a.  Type the prompt "Design Test Automation Framework using Instrucyions attached herewith in TypeScript.
-        The framework should be generated inside the Test Automation Framework Folder." in the chat window. Also attach the file AutomationFrameworkCreationInstructions present in the Instructions File for Testing folder.It would create all necessary components of the Ui Automation Framework using Playwright.
-        ![alt text](image-7.png)
+2. **Type the Prompt:**
 
-  4. Create Automation Test Scripts for Existing Test Cases created in Excercise 5.
-   a.       
+   ```text
+   Design Functional Test Cases for User Story attached herewith using Instructions attached. The URL of the application is <Your Application URL>. Also attach UserStory-01-Browse-Products from Functional User Stories Folder and FunctionalTestInstructions from the Instructions File For Testing Folder.
+   ```
+
+   ![Prompt Example](image-1.png)
+
+3. **After Prompt Execution:**
+   - Functional Test Cases will be generated in **CSV** and **JSON** format inside the **Functional Test Cases Folder**.
+   ![Generated Files](image-2.png)
+
+---
+
+## Exercise 6: Test Automation Using Playwright MCP Server
+
+### Goal
+Write Automation Test Scripts for the User Stories for the solution.
+
+### Steps
+
+1. **Check if Playwright MCP Server is added:**
+   - Click on **Tools** in Chat Window.  
+     ![Tools Menu](image-3.png)
+   - In the dropdown that opens, ensure **Playwright MCP Server** is available and selected.  
+     ![Playwright MCP](image-4.png)
+
+2. **If Playwright MCP Server is not added:**
+   - Press `Ctrl+Shift+P` and type:
+     ```
+     MCP: open User Configuration
+     ```
+     ![User Config](image-5.png)
+   - Add the following configuration:
+
+     ```json
+     "playwright": {
+       "command": "npx",
+       "args": [
+         "@playwright/mcp@latest"
+       ],
+       "type": "stdio"
+     }
+     ```
+
+   - Click **Run**. The configuration should now appear in Tools.  
+     ![Run Config](image-6.png)
+
+3. **Create Automation Script from Scratch:**
+   - Type the prompt:
+
+     ```text
+     Design Playwright Automation Test Cases for the attached functional TestCases JSON file using instructions attached. URL of the application is <<Your Application URL>>.
+     ```
+
+   - Also attach:
+     - `AutomationScriptCreationInstructions` from the **Instructions File** in the Testing folder.
+     - The relevant **UserStory**.
+
+   - This will create all necessary Playwright UI Automation Test Cases.  
+     ![Automation Prompt](image-8.png)
+
+4. **Permissions:**
+   - Ensure you select **Allow All** for all requests from the Agent.
+     
+             
     
    
 
