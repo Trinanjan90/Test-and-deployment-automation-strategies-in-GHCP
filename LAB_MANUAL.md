@@ -32,7 +32,8 @@ By the end of this lab, you will understand how to use GitHub Copilot to automat
 2. **Exercise 2**: Azure Resources Setup using GitHub Copilot
 3. **Exercise 3**: Deploy Application to AKS using GitHub Copilot
 4. **Exercise 4**: Automated Testing - Verify Deployment and Get Application URL
-5. **Exercise 5**: Test Automation Strategies with GitHub Copilot
+5. **Exercise 5**: Functional Test Case generation with GitHub Copilot
+6. **Exercise 6**: Test Automation Script Generation Using Playwright MCP Server
 
 ---
 
@@ -763,7 +764,7 @@ Write Functional Test Cases for the User Stories for the solution.
 2. **Type the Prompt:**
 
    ```text
-   Design Functional Test Cases for User Story attached herewith using Instructions attached. The URL of the application is <Your Application URL>. Also attach UserStory-01-Browse-Products from Functional User Stories Folder and FunctionalTestInstructions from the Instructions File For Testing Folder.
+   Design Functional Test Cases for User Story attached herewith using Instructions attached. The URL of the application is <Your Application URL>. Also attach UserStory-02-Add-Product-To-Cart from Functional User Stories Folder and FunctionalTestInstructions from the Instructions File For Testing Folder.
    ```
 
    ![Prompt Example](image-1.png)
