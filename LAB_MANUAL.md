@@ -760,7 +760,7 @@ echo "Testing Management UI port"
     ![alt text](image-2.png) 
 
 
-# Exercise 6: Test Automation Using PlayWright MCP Server - Write Automation Test Cases for the User Stories for the solution
+# Exercise 6: Test Automation Using PlayWright MCP Server - Write Automation Test Scripts for the User Stories for the solution
 
 1. Check if Playwright MCP Server is added
    a. Click on Tools in Chat Window
@@ -770,7 +770,25 @@ echo "Testing Management UI port"
  2. If PlayWright MCP Server is not added
    a. Press Ctrl+Shift+P and then type MCP: open User Configuration     
       ![alt text](image-5.png)
-   b.    
+   b.  Add the below configuration
+       "playwright": {
+			"command": "npx",
+			"args": [
+				"@playwright/mcp@latest"
+			],
+			"type": "stdio"
+		}
+   c. Then click on Run. The same should be clearly seen in tools
+          ![alt text](image-6.png)
+
+ 3. Create Automation Framework from scratch:
+   a.  Type the prompt "Design Test Automation Framework using Instrucyions attached herewith in TypeScript.
+        The framework should be generated inside the Test Automation Framework Folder." in the chat window. Also attach the file AutomationFrameworkCreationInstructions present in the Instructions File for Testing folder.It would create all necessary components of the Ui Automation Framework using Playwright.
+        ![alt text](image-7.png)
+
+  4. Create Automation Test Scripts for Existing Test Cases created in Excercise 5.
+   a.       
+    
    
 
 # Bonus Exercise: CI/CD with GitHub Actions
