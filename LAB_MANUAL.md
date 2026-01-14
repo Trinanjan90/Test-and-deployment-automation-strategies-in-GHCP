@@ -925,6 +925,8 @@ By completing this lab, you have learned to:
 - ✅ Automate troubleshooting workflows using AI-generated scripts
 - ✅ Scale, update, and manage Kubernetes resources using Copilot Agent Mode
 - ✅ Create reusable test automation templates for Kubernetes applications
+- ✅ Create functional test cases from User Story.
+- ✅ Create test automation scripts for functaional test cases.
 
 ## Bonus Achievement (Optional):
 - ✅ Design a complete CI/CD pipeline with GitHub Actions using Copilot
@@ -1026,10 +1028,10 @@ Your feedback is valuable! Please share your experience with this lab:
 ## Lab Credits
 
 **Lab Title:** Learn Test Automation Strategies in GHCP  
-**Created by:** Microsoft Azure Team  
+**Created by:** GCID  
 **Version:** 1.0  
 **Last Updated:** January 2026  
-**Focus:** GitHub Copilot Agent Mode for Kubernetes Test Automation  
+**Focus:** GitHub Copilot Agent Mode for Kubernetes Test Automation
 **Powered by:** GitHub Copilot & Azure Kubernetes Service
 
 ---
