@@ -1,0 +1,212 @@
+# Exercise 1: Prerequisites Installation
+
+In this exercise, you will set up your development environment with all necessary tools and authenticate to Azure. You'll use GitHub Copilot to help install and configure these tools.
+
+> [!IMPORTANT]
+> Make sure you have access to GitHub Copilot in your VS Code environment before starting this lab.
+
+<details>
+<summary><b>Step 1: Verify GitHub Copilot is Available</b></summary>
+
+1. Login at github.com/skillable-events with Azure slice (GHE activated) credentials.
+2. Once done, keep login page from SSO portal above open in browser.
+3. In VS Code, press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to open the command palette.
+4. Type **"GitHub Copilot: Sign In"** and press Enter.
+5. Continue with GHE.com login option in VS Code
+6  Authenticate profile through SSO portal 
+7. Verify GitHub Copilot is active by looking for the Copilot icon in the bottom right status bar.
+8. Open GitHub Copilot Chat by pressing `Ctrl+Alt+I` or clicking the chat icon in the sidebar.
+
+> [!NOTE]
+> If GitHub Copilot is not installed, use the Extensions marketplace to install "GitHub Copilot" and "GitHub Copilot Chat" extensions.
+
+</details>
+
+<details>
+<summary><b>Step 2: Use GitHub Copilot to Install Azure CLI</b></summary>
+
+1. Open GitHub Copilot Chat in VS Code (`Ctrl+Alt+I`).
+2. Ask Copilot:
+
+```
+@terminal I need to install Azure CLI on Windows. Please provide the installation commands.
+```
+
+3. Review Copilot's suggestions and follow the installation steps.
+4. Expected commands (Copilot should suggest similar):
+
+```powershell
+# Install Azure CLI using winget
+winget install -e --id Microsoft.AzureCLI
+
+# Or using PowerShell
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi
+Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+Remove-Item .\AzureCLI.msi
+```
+
+5. After installation, verify by running:
+
+```powershell
+az --version
+```
+
+</details>
+
+<details>
+<summary><b>Step 3: Use GitHub Copilot to Install kubectl</b></summary>
+
+1. In GitHub Copilot Chat, ask:
+
+```
+@terminal How do I install kubectl on Windows to manage Kubernetes clusters?
+```
+
+2. Follow Copilot's instructions. Expected commands:
+
+**Method 1: Using Azure CLI (Recommended)**
+```powershell
+# Install kubectl using Azure CLI
+az aks install-cli
+```
+
+**Method 2: Direct Download**
+```powershell
+# Download the latest kubectl release
+curl.exe -LO "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe"
+
+# Create a directory for kubectl
+New-Item -ItemType Directory -Force -Path C:\kubectl
+
+# Move kubectl to the directory
+Move-Item -Path kubectl.exe -Destination C:\kubectl\kubectl.exe
+
+# Add to PATH (for current session)
+$env:Path += ";C:\kubectl"
+
+# Add to PATH permanently (requires admin)
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\kubectl", [EnvironmentVariableTarget]::Machine)
+```
+
+**Method 3: Using Chocolatey**
+```powershell
+# If you have Chocolatey installed
+choco install kubernetes-cli
+```
+
+**Method 4: Using winget**
+```powershell
+# Using Windows Package Manager
+winget install -e --id Kubernetes.kubectl
+```
+
+3. Verify installation:
+
+```powershell
+kubectl version --client
+```
+
+Expected output:
+```
+Client Version: v1.29.0
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+```
+
+4. Test kubectl is working:
+
+```powershell
+kubectl cluster-info
+```
+
+> [!NOTE]
+> If kubectl command is not recognized, close and reopen your terminal to refresh the PATH environment variable.
+
+</details>
+
+<details>
+<summary><b>Step 4: Use GitHub Copilot to Install Git</b></summary>
+
+1. Ask GitHub Copilot:
+
+```
+@terminal Install Git on my Windows machine
+```
+
+2. Follow the suggested commands:
+
+```powershell
+# Install Git using winget
+winget install --id Git.Git -e --source winget
+```
+
+3. Verify installation:
+
+```powershell
+git --version
+```
+
+</details>
+
+<details>
+<summary><b>Step 5: Clone the Lab Repository using GitHub Copilot</b></summary>
+
+1. In Copilot Chat, ask:
+
+```
+@terminal Clone the repository https://github.com/Azure-Samples/aks-store-demo to my current directory
+```
+
+2. Copilot should suggest:
+
+```bash
+git clone https://github.com/Azure-Samples/aks-store-demo.git
+cd aks-store-demo
+```
+
+3. Alternatively, if you have the local files, ask Copilot:
+
+```
+@workspace Open the folder containing the aks-store-quickstart.yaml file
+```
+
+</details>
+
+<details>
+<summary><b>Step 6: Authenticate to Azure using GitHub Copilot</b></summary>
+
+1. Ask GitHub Copilot:
+
+```
+@terminal How do I login to Azure using Azure CLI?
+```
+
+2. Follow the suggested command:
+
+```bash
+az login
+```
+
+3. A browser window will open. Sign in with your Azure credentials provided in the lab:
+   - **Username**: `<from resources tab>`
+   - **Password**: `<from resources tab>`
+
+4. After successful login, verify your subscription:
+
+```bash
+az account show
+```
+
+5. If you have multiple subscriptions, set the correct one:
+
+```bash
+az account set --subscription "<subscription-id>"
+```
+
+</details>
+
+### Summary
+✅ You have successfully set up your development environment with all required tools  
+✅ Azure CLI, kubectl, and Git are installed  
+✅ You are authenticated to Azure  
+✅ GitHub Copilot is ready to assist you  
