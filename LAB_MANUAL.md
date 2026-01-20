@@ -247,7 +247,7 @@ az account set --subscription "<subscription-id>"
 ✅ You are authenticated to Azure  
 ✅ GitHub Copilot is ready to assist you  
 
----
+===
 
 # Exercise 2: Azure Resources Setup using GitHub Copilot
 
@@ -388,6 +388,8 @@ You should see 3 nodes in "Ready" state.
 ✅ You understand the application architecture  
 
 ---
+
+===
 
 # Exercise 3: Deploy Application to AKS using GitHub Copilot
 
@@ -545,6 +547,8 @@ Copilot will explain that Azure is provisioning a public IP, which takes 2-3 min
 ✅ LoadBalancer is being provisioned  
 
 ---
+
+===
 
 # Exercise 4: Automated Testing - Verify Deployment and Get Application URL
 
@@ -739,6 +743,8 @@ echo "Testing Management UI port"
 
 ---
 
+===
+
 ## Exercise 5: Functional Testing
 
 ### Goal
@@ -762,6 +768,8 @@ Write Functional Test Cases for the User Stories for the solution.
    ![Generated Files](image-2.png)
 
 ---
+
+===
 
 ## Exercise 6: Test Automation Using Playwright MCP Server
 
@@ -838,7 +846,7 @@ By completing this lab, you have learned to:
 - ✅ Create functional test cases from User Story
 - ✅ Create test automation scripts for functional test cases
 
----
+===
 
 # Key Takeaways
 
@@ -849,7 +857,7 @@ By completing this lab, you have learned to:
 5. **Learning by doing** - Copilot explains testing strategies while generating executable code
 6. **Best practices** - Copilot suggests industry-standard approaches to Kubernetes testing and monitoring
 
----
+===
 
 # Next Steps
 
@@ -916,7 +924,7 @@ Copilot will help you:
 
 </details>
 
----
+===
 
 # Feedback
 
