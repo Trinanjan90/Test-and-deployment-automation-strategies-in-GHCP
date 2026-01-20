@@ -32,7 +32,8 @@ By the end of this lab, you will understand how to use GitHub Copilot to automat
 2. **Exercise 2**: Azure Resources Setup using GitHub Copilot
 3. **Exercise 3**: Deploy Application to AKS using GitHub Copilot
 4. **Exercise 4**: Automated Testing - Verify Deployment and Get Application URL
-5. **Exercise 5**: Test Automation Strategies with GitHub Copilot
+5. **Exercise 5**: Functional Test Case generation with GitHub Copilot
+6. **Exercise 6**: Test Automation Script Generation Using Playwright MCP Server
 
 ---
 
@@ -738,6 +739,165 @@ echo "Testing Management UI port"
 
 ---
 
+## Exercise 5: Functional Testing
+
+### Goal
+Write Functional Test Cases for the User Stories for the solution.
+
+### Steps
+
+1. **Open GitHub Copilot Chat Mode and switch to Agent Mode.**  
+   ![Chat Mode](image.png)
+
+2. **Type the Prompt:**
+
+   ```text
+   Design Functional Test Cases for User Story attached herewith using Instructions attached. The URL of the application is <Your Application URL>. Also attach UserStory-02-Add-Product-To-Cart from Functional User Stories Folder and FunctionalTestInstructions from the Instructions File For Testing Folder.
+   ```
+
+   ![Prompt Example](image-1.png)
+
+3. **After Prompt Execution:**
+   - Functional Test Cases will be generated in **CSV** and **JSON** format inside the **Functional Test Cases Folder**.
+   ![Generated Files](image-2.png)
+
+---
+
+## Exercise 6: Test Automation Using Playwright MCP Server
+
+### Goal
+Write Automation Test Scripts for the User Stories for the solution.
+
+### Steps
+
+1. **Check if Playwright MCP Server is added:**
+   - Click on **Tools** in Chat Window.  
+     ![Tools Menu](image-3.png)
+   - In the dropdown that opens, ensure **Playwright MCP Server** is available and selected.  
+     ![Playwright MCP](image-4.png)
+
+2. **If Playwright MCP Server is not added:**
+   - Press `Ctrl+Shift+P` and type:
+     ```
+     MCP: open User Configuration
+     ```
+     ![User Config](image-5.png)
+   - Add the following configuration:
+
+     ```json
+     "playwright": {
+       "command": "npx",
+       "args": [
+         "@playwright/mcp@latest"
+       ],
+       "type": "stdio"
+     }
+     ```
+
+   - Click **Run**. The configuration should now appear in Tools.  
+     ![Run Config](image-6.png)
+
+3. **Create Automation Script from Scratch:**
+   - Type the prompt:
+
+     ```text
+     Design Playwright Automation Test Cases for the attached functional TestCases JSON file using instructions attached. URL of the application is <<Your Application URL>>.
+     ```
+
+   - Also attach:
+     - `AutomationScriptCreationInstructions` from the **Instructions File** in the Testing folder.
+     - The relevant **UserStory**.
+
+   - This will create all necessary Playwright UI Automation Test Cases.  
+     ![Automation Prompt](image-8.png)
+
+4. **Permissions:**
+   - Ensure you select **Allow All** for all requests from the Agent.
+     
+             
+    
+   
+
+# Bonus Exercise: CI/CD with GitHub Actions
+
+<details>
+<summary><b>Bonus: Create a GitHub Actions Workflow for Automated Deployment</b></summary>
+
+In this bonus exercise, you'll use GitHub Copilot to create a complete CI/CD pipeline that automates the deployment of your AKS Store Demo application using GitHub Actions.
+
+### Objective
+Create a GitHub Actions workflow that:
+- Builds and pushes Docker images to Azure Container Registry (ACR)
+- Deploys the updated images to your AKS cluster
+- Runs automated health checks after deployment
+- Notifies on deployment success or failure
+
+### Instructions
+
+1. **Create the workflow file structure**
+   
+   Ask GitHub Copilot:
+   ```
+   Create a .github/workflows directory structure for a GitHub Actions workflow that deploys a microservices application to Azure Kubernetes Service
+   ```
+
+2. **Generate the CI/CD workflow**
+   
+   Ask GitHub Copilot:
+   ```
+   Create a GitHub Actions workflow that builds Docker images for order-service, product-service, and store-front, pushes them to Azure Container Registry, and deploys to AKS using the aks-store-quickstart.yaml manifest. Include steps for Azure login, ACR authentication, image building with unique tags, updating the Kubernetes manifests with new image tags, and deploying to AKS.
+   ```
+
+3. **Add automated testing steps**
+   
+   Ask GitHub Copilot:
+   ```
+   Add steps to the workflow that verify all pods are running and perform health checks on all services after deployment
+   ```
+
+4. **Configure secrets and environment variables**
+   
+   Ask GitHub Copilot:
+   ```
+   What GitHub secrets and environment variables do I need to configure for this workflow to authenticate with Azure and deploy to AKS? List them with descriptions.
+   ```
+
+5. **Add deployment notifications**
+   
+   Ask GitHub Copilot:
+   ```
+   Add a step to send a Slack notification or create a GitHub issue when the deployment fails
+   ```
+
+6. **Implement rollback capability**
+   
+   Ask GitHub Copilot:
+   ```
+   Add a manual workflow trigger that can rollback the deployment to the previous version if something goes wrong
+   ```
+
+### Challenge Questions
+
+After creating the workflow, ask GitHub Copilot to help you:
+
+- How can I implement a staging environment deployment before production?
+- How can I add approval gates for production deployments?
+- How can I optimize the Docker build process using layer caching?
+- How can I run integration tests between services before deploying?
+- How can I implement blue-green or canary deployments?
+
+### Tips for Success
+
+- Use GitHub Copilot Chat to iteratively refine your workflow
+- Test each component of the workflow separately before combining
+- Use workflow_dispatch trigger for manual testing during development
+- Consider security best practices for storing credentials
+- Implement proper error handling and cleanup steps
+
+</details>
+
+---
+
 # Lab Completion Checklist
 
 By completing this lab, you have learned to:
@@ -753,6 +913,14 @@ By completing this lab, you have learned to:
 - ✅ Automate troubleshooting workflows using AI-generated scripts
 - ✅ Scale, update, and manage Kubernetes resources using Copilot Agent Mode
 - ✅ Create reusable test automation templates for Kubernetes applications
+- ✅ Create functional test cases from User Story.
+- ✅ Create test automation scripts for functaional test cases.
+
+## Bonus Achievement (Optional):
+- ✅ Design a complete CI/CD pipeline with GitHub Actions using Copilot
+- ✅ Implement automated Docker image builds and ACR integration
+- ✅ Configure automated deployments to AKS with health validation
+- ✅ Set up deployment notifications and rollback capabilities
 
 ---
 
@@ -848,10 +1016,10 @@ Your feedback is valuable! Please share your experience with this lab:
 ## Lab Credits
 
 **Lab Title:** Learn Test Automation Strategies in GHCP  
-**Created by:** Microsoft Azure Team  
+**Created by:** GCID  
 **Version:** 1.0  
 **Last Updated:** January 2026  
-**Focus:** GitHub Copilot Agent Mode for Kubernetes Test Automation  
+**Focus:** GitHub Copilot Agent Mode for Kubernetes Test Automation
 **Powered by:** GitHub Copilot & Azure Kubernetes Service
 
 ---
