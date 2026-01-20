@@ -1,20 +1,20 @@
-# Lab Completion Checklist
+﻿# Lab Completion Checklist
 
 By completing this lab, you have learned to:
 
-- ✅ Set up your development environment with GitHub Copilot assistance
-- ✅ Install and configure Azure CLI, kubectl, and Git using AI guidance
-- ✅ Create Azure resources (Resource Group, AKS cluster) with Copilot's help
-- ✅ Deploy a 4-microservice Kubernetes application using GitHub Copilot
-- ✅ Create automated scripts to verify deployment status
-- ✅ Build test automation scripts for health checking and monitoring
-- ✅ Retrieve application endpoints using automated shell scripts
-- ✅ Implement continuous validation strategies with GitHub Copilot
-- ✅ Automate troubleshooting workflows using AI-generated scripts
-- ✅ Scale, update, and manage Kubernetes resources using Copilot Agent Mode
-- ✅ Create reusable test automation templates for Kubernetes applications
-- ✅ Create functional test cases from User Story
-- ✅ Create test automation scripts for functional test cases
+- âœ… Set up your development environment with GitHub Copilot assistance
+- âœ… Install and configure Azure CLI, kubectl, and Git using AI guidance
+- âœ… Create Azure resources (Resource Group, AKS cluster) with Copilot's help
+- âœ… Deploy a 4-microservice Kubernetes application using GitHub Copilot
+- âœ… Create automated scripts to verify deployment status
+- âœ… Build test automation scripts for health checking and monitoring
+- âœ… Retrieve application endpoints using automated shell scripts
+- âœ… Implement continuous validation strategies with GitHub Copilot
+- âœ… Automate troubleshooting workflows using AI-generated scripts
+- âœ… Scale, update, and manage Kubernetes resources using Copilot Agent Mode
+- âœ… Create reusable test automation templates for Kubernetes applications
+- âœ… Create functional test cases from User Story
+- âœ… Create test automation scripts for functional test cases
 
 ===
 
@@ -33,7 +33,7 @@ By completing this lab, you have learned to:
 
 ## Continue Your Test Automation Journey:
 
-1. **Advanced Testing**: Create integration tests that validate order flow from store-front → order-service → RabbitMQ
+1. **Advanced Testing**: Create integration tests that validate order flow from store-front â†’ order-service â†’ RabbitMQ
 2. **Performance Testing**: Use Copilot to generate load testing scripts with tools like k6 or Apache JMeter
 3. **CI/CD Integration**: Create GitHub Actions workflows that run automated tests on every deployment
 4. **Monitoring & Alerting**: Set up Application Insights and configure automated alerts for failures
@@ -118,6 +118,6 @@ Your feedback is valuable! Please share your experience with this lab:
 
 ---
 
-**Thank you for completing this lab! Master test automation with GitHub Copilot! 🚀**
+**Thank you for completing this lab! Master test automation with GitHub Copilot! ðŸš€**
 
 ---
