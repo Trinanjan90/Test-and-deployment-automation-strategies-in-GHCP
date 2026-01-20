@@ -119,3 +119,5 @@ Your feedback is valuable! Please share your experience with this lab:
 ---
 
 **Thank you for completing this lab! Master test automation with GitHub Copilot! 🚀**
+
+---
