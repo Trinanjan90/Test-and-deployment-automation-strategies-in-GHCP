@@ -28,7 +28,7 @@ By the end of this lab, you will understand how to use GitHub Copilot to automat
 **Estimated Time**: 60-90 minutes
 
 ## Lab Structure
-1. **Exercise 1**: VM Setup and Prerequisites Installation
+1. **Exercise 1**: Prerequisites Installation
 2. **Exercise 2**: Azure Resources Setup using GitHub Copilot
 3. **Exercise 3**: Deploy Application to AKS using GitHub Copilot
 4. **Exercise 4**: Automated Testing - Verify Deployment and Get Application URL
@@ -37,9 +37,9 @@ By the end of this lab, you will understand how to use GitHub Copilot to automat
 
 ---
 
-# Exercise 1: VM Setup and Prerequisites Installation
+# Exercise 1: Prerequisites Installation
 
-In this exercise, you will set up your development VM with all necessary tools and authenticate to Azure. You'll use GitHub Copilot to help install and configure these tools.
+In this exercise, you will set up your development environment with all necessary tools and authenticate to Azure. You'll use GitHub Copilot to help install and configure these tools.
 
 > [!IMPORTANT]
 > Make sure you have access to GitHub Copilot in your VS Code environment before starting this lab.
@@ -65,7 +65,7 @@ In this exercise, you will set up your development VM with all necessary tools a
 2. Ask Copilot:
 
 ```
-@terminal I need to install Azure CLI on my Windows VM. Please provide the installation commands.
+@terminal I need to install Azure CLI on Windows. Please provide the installation commands.
 ```
 
 3. Review Copilot's suggestions and follow the installation steps.
@@ -242,7 +242,7 @@ az account set --subscription "<subscription-id>"
 </details>
 
 ### Summary
-✅ You have successfully set up your VM with all required tools  
+✅ You have successfully set up your development environment with all required tools  
 ✅ Azure CLI, kubectl, and Git are installed  
 ✅ You are authenticated to Azure  
 ✅ GitHub Copilot is ready to assist you  
@@ -667,7 +667,7 @@ echo "http://$(kubectl get service store-front -o jsonpath='{.status.loadBalance
 <summary><b>Step 4: Access the Application</b></summary>
 
 1. Copy the URL from the previous step.
-2. Open a web browser on your VM or local machine.
+2. Open a web browser.
 3. Paste the URL: `http://<EXTERNAL-IP>`
 4. You should see the **AKS Store Demo** application homepage.
 
@@ -818,91 +818,13 @@ Write Automation Test Scripts for the User Stories for the solution.
     
    
 
-# Bonus Exercise: CI/CD with GitHub Actions
-
-<details>
-<summary><b>Bonus: Create a GitHub Actions Workflow for Automated Deployment</b></summary>
-
-In this bonus exercise, you'll use GitHub Copilot to create a complete CI/CD pipeline that automates the deployment of your AKS Store Demo application using GitHub Actions.
-
-### Objective
-Create a GitHub Actions workflow that:
-- Builds and pushes Docker images to Azure Container Registry (ACR)
-- Deploys the updated images to your AKS cluster
-- Runs automated health checks after deployment
-- Notifies on deployment success or failure
-
-### Instructions
-
-1. **Create the workflow file structure**
-   
-   Ask GitHub Copilot:
-   ```
-   Create a .github/workflows directory structure for a GitHub Actions workflow that deploys a microservices application to Azure Kubernetes Service
-   ```
-
-2. **Generate the CI/CD workflow**
-   
-   Ask GitHub Copilot:
-   ```
-   Create a GitHub Actions workflow that builds Docker images for order-service, product-service, and store-front, pushes them to Azure Container Registry, and deploys to AKS using the aks-store-quickstart.yaml manifest. Include steps for Azure login, ACR authentication, image building with unique tags, updating the Kubernetes manifests with new image tags, and deploying to AKS.
-   ```
-
-3. **Add automated testing steps**
-   
-   Ask GitHub Copilot:
-   ```
-   Add steps to the workflow that verify all pods are running and perform health checks on all services after deployment
-   ```
-
-4. **Configure secrets and environment variables**
-   
-   Ask GitHub Copilot:
-   ```
-   What GitHub secrets and environment variables do I need to configure for this workflow to authenticate with Azure and deploy to AKS? List them with descriptions.
-   ```
-
-5. **Add deployment notifications**
-   
-   Ask GitHub Copilot:
-   ```
-   Add a step to send a Slack notification or create a GitHub issue when the deployment fails
-   ```
-
-6. **Implement rollback capability**
-   
-   Ask GitHub Copilot:
-   ```
-   Add a manual workflow trigger that can rollback the deployment to the previous version if something goes wrong
-   ```
-
-### Challenge Questions
-
-After creating the workflow, ask GitHub Copilot to help you:
-
-- How can I implement a staging environment deployment before production?
-- How can I add approval gates for production deployments?
-- How can I optimize the Docker build process using layer caching?
-- How can I run integration tests between services before deploying?
-- How can I implement blue-green or canary deployments?
-
-### Tips for Success
-
-- Use GitHub Copilot Chat to iteratively refine your workflow
-- Test each component of the workflow separately before combining
-- Use workflow_dispatch trigger for manual testing during development
-- Consider security best practices for storing credentials
-- Implement proper error handling and cleanup steps
-
-</details>
-
 ---
 
 # Lab Completion Checklist
 
 By completing this lab, you have learned to:
 
-- ✅ Set up a development VM with GitHub Copilot assistance
+- ✅ Set up your development environment with GitHub Copilot assistance
 - ✅ Install and configure Azure CLI, kubectl, and Git using AI guidance
 - ✅ Create Azure resources (Resource Group, AKS cluster) with Copilot's help
 - ✅ Deploy a 4-microservice Kubernetes application using GitHub Copilot
@@ -913,14 +835,8 @@ By completing this lab, you have learned to:
 - ✅ Automate troubleshooting workflows using AI-generated scripts
 - ✅ Scale, update, and manage Kubernetes resources using Copilot Agent Mode
 - ✅ Create reusable test automation templates for Kubernetes applications
-- ✅ Create functional test cases from User Story.
-- ✅ Create test automation scripts for functaional test cases.
-
-## Bonus Achievement (Optional):
-- ✅ Design a complete CI/CD pipeline with GitHub Actions using Copilot
-- ✅ Implement automated Docker image builds and ACR integration
-- ✅ Configure automated deployments to AKS with health validation
-- ✅ Set up deployment notifications and rollback capabilities
+- ✅ Create functional test cases from User Story
+- ✅ Create test automation scripts for functional test cases
 
 ---
 
