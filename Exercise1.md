@@ -185,20 +185,16 @@ cd Test-and-deployment-automation-strategies-in-GHCP
 2. Follow the suggested command:
 
 ```bash
-az login
+az login --user "<username from resources tab> --password "<password from resources tab>"
 ```
 
-3. A browser window will open. Sign in with your Azure credentials provided in the lab:
-   - **Username**: `<from resources tab>`
-   - **Password**: `<from resources tab>`
-
-4. After successful login, verify your subscription:
+3. After successful login, verify your subscription:
 
 ```bash
 az account show
 ```
 
-5. If you have multiple subscriptions, set the correct one:
+4. If you have multiple subscriptions, set the correct one:
 
 ```bash
 az account set --subscription "<subscription-id>"
