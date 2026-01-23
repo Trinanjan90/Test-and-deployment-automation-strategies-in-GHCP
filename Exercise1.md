@@ -82,14 +82,15 @@ if (Get-Command kubectl -ErrorAction SilentlyContinue) {
 } else {
     Write-Host "kubectl not found. Installing..." -ForegroundColor Yellow
     
-    # Download the latest kubectl release
-    curl.exe -LO "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe"
+    # Download the latest kubectl release using Invoke-WebRequest
+    $ProgressPreference = 'SilentlyContinue'
+    Invoke-WebRequest -Uri "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe" -OutFile "kubectl.exe"
 
     # Create a directory for kubectl
     New-Item -ItemType Directory -Force -Path C:\kubectl
 
     # Move kubectl to the directory
-    Move-Item -Path kubectl.exe -Destination C:\kubectl\kubectl.exe
+    Move-Item -Path kubectl.exe -Destination C:\kubectl\kubectl.exe -Force
 
     # Add to PATH (for current session)
     $env:Path += ";C:\kubectl"
