@@ -29,24 +29,31 @@ In this exercise, you will set up your development environment with all necessar
 2. Ask Copilot:
 
 ```
-@terminal I need to install Azure CLI on Windows. Please provide the installation commands.
+@terminal Check if Azure CLI is installed. If not, install it on Windows.
 ```
 
 3. Review Copilot's suggestions and follow the installation steps.
-4. Expected commands (Copilot should suggest similar):
+
+**Alternatively, you can perform the following manually:**
 
 ```powershell
-# Install Azure CLI using winget
-winget install -e --id Microsoft.AzureCLI
-
-# Or using PowerShell
-$ProgressPreference = 'SilentlyContinue'
-Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi
-Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
-Remove-Item .\AzureCLI.msi
+# Check if Azure CLI is already installed
+if (Get-Command az -ErrorAction SilentlyContinue) {
+    Write-Host "Azure CLI is already installed." -ForegroundColor Green
+    az --version
+} else {
+    Write-Host "Azure CLI not found. Installing..." -ForegroundColor Yellow
+    
+    # Install Azure CLI using PowerShell
+    $ProgressPreference = 'SilentlyContinue'
+    Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi
+    Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+    
+    Write-Host "Installation complete." -ForegroundColor Green
+}
 ```
 
-5. After installation, verify by running:
+4. After installation, verify by running:
 
 ```powershell
 az --version
@@ -60,45 +67,38 @@ az --version
 1. In GitHub Copilot Chat, ask:
 
 ```
-@terminal How do I install kubectl on Windows to manage Kubernetes clusters?
+@terminal Check if kubectl is installed. If not, install it on Windows.
 ```
 
-2. Follow Copilot's instructions. Expected commands:
+2. Follow Copilot's instructions.
 
-**Method 1: Using Azure CLI (Recommended)**
+**Alternatively, you can perform the following manually:**
+
 ```powershell
-# Install kubectl using Azure CLI
-az aks install-cli
-```
+# Check if kubectl is already installed
+if (Get-Command kubectl -ErrorAction SilentlyContinue) {
+    Write-Host "kubectl is already installed." -ForegroundColor Green
+    kubectl version --client
+} else {
+    Write-Host "kubectl not found. Installing..." -ForegroundColor Yellow
+    
+    # Download the latest kubectl release
+    curl.exe -LO "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe"
 
-**Method 2: Direct Download**
-```powershell
-# Download the latest kubectl release
-curl.exe -LO "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe"
+    # Create a directory for kubectl
+    New-Item -ItemType Directory -Force -Path C:\kubectl
 
-# Create a directory for kubectl
-New-Item -ItemType Directory -Force -Path C:\kubectl
+    # Move kubectl to the directory
+    Move-Item -Path kubectl.exe -Destination C:\kubectl\kubectl.exe
 
-# Move kubectl to the directory
-Move-Item -Path kubectl.exe -Destination C:\kubectl\kubectl.exe
+    # Add to PATH (for current session)
+    $env:Path += ";C:\kubectl"
 
-# Add to PATH (for current session)
-$env:Path += ";C:\kubectl"
-
-# Add to PATH permanently (requires admin)
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\kubectl", [EnvironmentVariableTarget]::Machine)
-```
-
-**Method 3: Using Chocolatey**
-```powershell
-# If you have Chocolatey installed
-choco install kubernetes-cli
-```
-
-**Method 4: Using winget**
-```powershell
-# Using Windows Package Manager
-winget install -e --id Kubernetes.kubectl
+    # Add to PATH permanently (requires admin)
+    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\kubectl", [EnvironmentVariableTarget]::Machine)
+    
+    Write-Host "Installation complete." -ForegroundColor Green
+}
 ```
 
 3. Verify installation:
@@ -154,14 +154,14 @@ git --version
 1. In Copilot Chat, ask:
 
 ```
-@terminal Clone the repository https://github.com/Azure-Samples/aks-store-demo to my current directory
+@terminal Clone the repository https://github.com/Trinanjan90/Test-and-deployment-automation-strategies-in-GHCP to my current directory
 ```
 
 2. Copilot should suggest:
 
 ```bash
-git clone https://github.com/Azure-Samples/aks-store-demo.git
-cd aks-store-demo
+git clone https://github.com/Trinanjan90/Test-and-deployment-automation-strategies-in-GHCP.git
+cd Test-and-deployment-automation-strategies-in-GHCP
 ```
 
 3. Alternatively, if you have the local files, ask Copilot:

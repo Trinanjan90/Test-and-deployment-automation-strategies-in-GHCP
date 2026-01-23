@@ -1,85 +1,30 @@
 # Exercise 2: Azure Resources Setup using GitHub Copilot
 
-In this exercise, you will use GitHub Copilot to help you create the necessary Azure resources including a resource group and an AKS cluster.
+In this exercise, you will use GitHub Copilot to help you connect to the pre-provisioned Azure resources including the resource group and AKS cluster.
+
+## Verify Azure Resources
+
+1. Login to the [Azure Portal](https://portal.azure.com) using the credentials available in the **Resources** tab.
+   - **Username**: `<from resources tab>`
+   - **Password**: `<from resources tab>`
+
+2. Once logged in, you will see the Resource group named **"TechConnect2026"** containing your pre-provisioned AKS cluster.
+
+   ![Azure Resources](azureresources.png)
 
 <details>
-<summary><b>Step 1: Ask GitHub Copilot for Resource Group Creation</b></summary>
-
-1. Open GitHub Copilot Chat and ask:
-
-```
-@terminal Create an Azure resource group named 'aks-store-rg' in the eastus region
-```
-
-2. Copilot should suggest a command similar to:
-
-```bash
-az group create --name aks-store-rg --location eastus
-```
-
-3. Execute the command in the terminal.
-4. Verify the resource group was created:
-
-```bash
-az group show --name aks-store-rg
-```
-
-</details>
-
-<details>
-<summary><b>Step 2: Use GitHub Copilot to Create AKS Cluster</b></summary>
-
-1. In Copilot Chat, provide a detailed request:
-
-```
-@terminal Create an AKS cluster named 'aks-store-cluster' in resource group 'aks-store-rg' with the following specifications:
-- Node count: 3
-- Node VM size: Standard_DS2_v2  
-- Enable managed identity
-- Enable monitoring
-- Kubernetes version: 1.28 or latest
-```
-
-2. GitHub Copilot should suggest something like:
-
-```bash
-az aks create \
-  --resource-group aks-store-rg \
-  --name aks-store-cluster \
-  --node-count 3 \
-  --node-vm-size Standard_DS2_v2 \
-  --enable-managed-identity \
-  --enable-addons monitoring \
-  --generate-ssh-keys \
-  --location eastus
-```
-
-3. Execute the command. **This will take approximately 5-10 minutes to complete.**
-
-> [!NOTE]
-> While the AKS cluster is being created, you can read through the next steps to understand what we'll be deploying.
-
-4. Once complete, verify the cluster:
-
-```bash
-az aks show --resource-group aks-store-rg --name aks-store-cluster --output table
-```
-
-</details>
-
-<details>
-<summary><b>Step 3: Get AKS Credentials using GitHub Copilot</b></summary>
+<summary><b>Step 1: Get AKS Credentials using GitHub Copilot</b></summary>
 
 1. Ask GitHub Copilot:
 
 ```
-@terminal How do I get kubectl credentials for my AKS cluster named 'aks-store-cluster' in resource group 'aks-store-rg'?
+@terminal How do I get kubectl credentials for my AKS cluster named 'aks-store-cluster' in resource group 'TechConnect2026'?
 ```
 
 2. Copilot should suggest:
 
 ```bash
-az aks get-credentials --resource-group aks-store-rg --name aks-store-cluster
+az aks get-credentials --resource-group TechConnect2026 --name aks-store-cluster
 ```
 
 3. Execute the command to configure kubectl to use your AKS cluster.
@@ -95,7 +40,7 @@ You should see 3 nodes in "Ready" state.
 </details>
 
 <details>
-<summary><b>Step 4: Inspect the Application Manifest using GitHub Copilot</b></summary>
+<summary><b>Step 2: Inspect the Application Manifest using GitHub Copilot</b></summary>
 
 1. Open the file `aks-store-quickstart.yaml` in VS Code.
 
@@ -131,9 +76,7 @@ You should see 3 nodes in "Ready" state.
 </details>
 
 ### Summary
-✅ Resource group created  
-✅ AKS cluster is running with 3 nodes  
-✅ kubectl is configured to access the cluster  
+✅ kubectl is configured to access the pre-provisioned AKS cluster  
 ✅ You understand the application architecture  
 
 ---
