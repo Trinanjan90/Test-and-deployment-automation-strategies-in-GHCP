@@ -12,22 +12,24 @@ In this exercise, you will use GitHub Copilot to help you connect to the pre-pro
 
    ![Azure Resources](azureresources.png)
 
+3. Note the **AKS cluster name** from the Azure Portal - you will need it in the next step.
+
 <details>
 <summary><b>Step 1: Get AKS Credentials using GitHub Copilot</b></summary>
 
 1. Ask GitHub Copilot:
 
 ```
-@terminal How do I get kubectl credentials for my AKS cluster named 'aks-store-cluster' in resource group 'TechConnect2026'?
+@terminal How do I get kubectl credentials for my AKS cluster in resource group 'TechConnect2026'?
 ```
 
 2. Copilot should suggest:
 
 ```bash
-az aks get-credentials --resource-group TechConnect2026 --name aks-store-cluster
+az aks get-credentials --resource-group TechConnect2026 --name <your-aks-cluster-name>
 ```
 
-3. Execute the command to configure kubectl to use your AKS cluster.
+3. Replace `<your-aks-cluster-name>` with the AKS cluster name you noted from the Azure Portal, then execute the command to configure kubectl to use your AKS cluster.
 
 4. Verify connectivity:
 
@@ -42,7 +44,7 @@ You should see 3 nodes in "Ready" state.
 <details>
 <summary><b>Step 2: Inspect the Application Manifest using GitHub Copilot</b></summary>
 
-1. Open the file `aks-store-quickstart.yaml` in VS Code.
+1. Open the file `aks-store-app-manifest/aks-store-quickstart.yaml` in VS Code.
 
 2. Select some portion of the YAML and ask Copilot:
 

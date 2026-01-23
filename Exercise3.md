@@ -14,9 +14,7 @@ In this exercise, you will deploy the 4-microservice application to your AKS clu
 2. Copilot might suggest:
 
 ```bash
-cd aks-store-demo
-# or if you're in a different location
-cd src
+cd aks-store-app-manifest
 ```
 
 3. Verify the file exists:
