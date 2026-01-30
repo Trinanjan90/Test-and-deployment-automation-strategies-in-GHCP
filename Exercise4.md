@@ -123,7 +123,7 @@ echo "http://$(kubectl get service store-front -o jsonpath='{.status.loadBalance
 3. Paste the URL: `http://<EXTERNAL-IP>`
 4. You should see the **AKS Store Demo** application homepage.
 
-![Application Homepage](The storefront should show a product catalog with pet supplies)
+![Application Homepage](apphomepage.png)
 
 5. Test the application:
    - Browse products
