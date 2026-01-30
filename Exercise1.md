@@ -8,7 +8,7 @@ In this exercise, you will set up your development environment with all necessar
 <details>
 <summary><b>Step 1: Verify GitHub Copilot is Available</b></summary>
 
-1. Login at github.com/skillable-events with Azure slice (GHE activated) credentials.
+1. Login at https://github.com/enterprises/skillable-events/sso with Azure slice (GHE activated) credentials.
 2. Once done, keep login page from SSO portal above open in browser.
 3. In VS Code, press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to open the command palette.
 4. Type **"GitHub Copilot: Sign In"** and press Enter.
