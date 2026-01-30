@@ -8,11 +8,9 @@
 Welcome to the GitHub Copilot Test Automation Lab! In this hands-on lab, you will learn how to leverage **GitHub Copilot Agent Mode** to deploy and test a microservices-based e-commerce application on Azure Kubernetes Service (AKS). 
 
 This lab demonstrates how GitHub Copilot can assist with:
-- Automated infrastructure setup and deployment
+- App deployments to AKS
 - Writing test scripts and validation commands
 - Automated health checks and monitoring
-- Troubleshooting and debugging strategies
-- Creating reusable automation scripts
 
 The application consists of 4 microservices:
 - **Store-Front**: Vue.js web interface for customers
