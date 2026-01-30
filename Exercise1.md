@@ -174,15 +174,9 @@ cd Test-and-deployment-automation-strategies-in-GHCP
 </details>
 
 <details>
-<summary><b>Step 6: Authenticate to Azure using GitHub Copilot</b></summary>
+<summary><b>Step 6: Authenticate to Azure using Azure CLI in terminal</b></summary>
 
-1. Ask GitHub Copilot:
-
-```
-@terminal How do I login to Azure using Azure CLI?
-```
-
-2. Follow the suggested command:
+1. Follow the below command:
 
 ```bash
 az login --user "<username from resources tab> --password "<password from resources tab>"
