@@ -11,7 +11,9 @@ In this exercise, you will set up your development environment with all necessar
 1. Login at https://github.com/enterprises/skillable-events/sso with Azure slice (GHE activated) credentials.
 2. Once done, keep login page from SSO portal above open in browser.
 3. In VS Code, press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to open the command palette.
-4. Type **"GitHub Copilot: Sign In"** and press Enter.
+4. Click on Copilot Icon in the bettom and then on the Sign in to use AI Features Option
+   <img width="217" height="241" alt="image" src="https://github.com/user-attachments/assets/866cd0c9-de08-4aad-8859-08273bf0c4e4" />
+
 5. Continue with GHE.com login option in VS Code
 6  Authenticate profile through SSO portal 
 7. Verify GitHub Copilot is active by looking for the Copilot icon in the bottom right status bar.
