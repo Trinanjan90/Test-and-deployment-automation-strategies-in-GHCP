@@ -11,7 +11,7 @@ Write Automation Test Scripts for the User Stories for the solution.
    - In the dropdown that opens, ensure **Playwright MCP Server** is available and selected.  
      ![Playwright MCP](image-4.png)
 
-2. **If Playwright MCP Server is not added:**
+2. a. **If Playwright MCP Server is not added:**
    - Press `Ctrl+Shift+P` and type:
      ```
      MCP: open User Configuration
@@ -31,6 +31,10 @@ Write Automation Test Scripts for the User Stories for the solution.
 
    - Click **Run**. The configuration should now appear in Tools.  
      ![Run Config](image-6.png)
+
+     b. If Chrome is not present in the system,
+         You can install the same from the Internet.
+          
 
 3. **Create Automation Script from Scratch:**
    - Type the prompt:
