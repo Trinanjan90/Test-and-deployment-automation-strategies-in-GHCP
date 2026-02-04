@@ -5,19 +5,22 @@ In this exercise, you will deploy the 4-microservice application to your AKS clu
 <details>
 <summary><b>Step 1: Navigate to the Manifest Directory</b></summary>
 
-1. Ask GitHub Copilot:
+1. Open a terminal in VS Code if not already visible:
+   - Go to **View** → **Terminal** (or press `` Ctrl+` ``)
 
-```
-@terminal Navigate to the directory containing aks-store-quickstart.yaml file
+2. Navigate to the folder where you cloned the lab repository:
+
+```bash
+cd <path-to-cloned-repo>/Test-and-deployment-automation-strategies-in-GHCP
 ```
 
-2. Copilot might suggest:
+3. Navigate to the manifest directory:
 
 ```bash
 cd aks-store-app-manifest
 ```
 
-3. Verify the file exists:
+4. Verify the file exists:
 
 ```bash
 ls aks-store-quickstart.yaml
@@ -135,13 +138,20 @@ product-service   ClusterIP      10.0.100.3     <none>         3002/TCP
 store-front       LoadBalancer   10.0.100.4     <pending>      80:30080/TCP
 ```
 
-4. The `store-front` service is type `LoadBalancer`. Ask Copilot:
+4. The `store-front` service is type `LoadBalancer`. If the EXTERNAL-IP shows as `<pending>`, wait 1-2 minutes and run the command again:
+
+```bash
+kubectl get svc -o wide
+```
+
+5. Keep executing the command until the `store-front` service shows a valid external IP address:
 
 ```
-@terminal Why is the EXTERNAL-IP showing as <pending> for my LoadBalancer service?
+NAME              TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)
+store-front       LoadBalancer   10.0.100.4     20.xx.xx.xx      80:30080/TCP
 ```
 
-Copilot will explain that Azure is provisioning a public IP, which takes 2-3 minutes.
+6. **Copy the EXTERNAL-IP** of the `store-front` service - you will need this to access the application.
 
 </details>
 
@@ -149,6 +159,6 @@ Copilot will explain that Azure is provisioning a public IP, which takes 2-3 min
 ✅ Application deployed to AKS  
 ✅ All pods are running successfully  
 ✅ Services are created  
-✅ LoadBalancer is being provisioned  
+✅ LoadBalancer is provisioned  
 
 ---

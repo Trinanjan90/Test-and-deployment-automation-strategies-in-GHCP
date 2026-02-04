@@ -1,4 +1,4 @@
-# Exercise 1: Prerequisites Installation
+# Exercise 1: Prerequisites Installation/Verification
 
 In this exercise, you will set up your development environment with all necessary tools and authenticate to Azure. You'll use GitHub Copilot to help install and configure these tools.
 
@@ -129,26 +129,21 @@ kubectl cluster-info
 </details>
 
 <details>
-<summary><b>Step 4: Use GitHub Copilot to Install Git</b></summary>
+<summary><b>Step 4: Verify Git is Installed</b></summary>
 
-1. Ask GitHub Copilot:
-
-```
-@terminal Install Git on my Windows machine
-```
-
-2. Follow the suggested commands:
-
-```powershell
-# Install Git using winget
-winget install --id Git.Git -e --source winget
-```
-
-3. Verify installation:
+1. Run the following command in your terminal:
 
 ```powershell
 git --version
 ```
+
+Expected output (version may vary):
+```
+git version 2.x.x.windows.x
+```
+
+> [!NOTE]
+> If Git is not installed, contact your lab administrator or install it from https://git-scm.com/download/win
 
 </details>
 
@@ -158,20 +153,16 @@ git --version
 1. In Copilot Chat, ask:
 
 ```
-@terminal Clone the repository https://github.com/Trinanjan90/Test-and-deployment-automation-strategies-in-GHCP to my current directory
+@terminal Create a new directory called TechConnect2026 and clone the repository https://github.com/Trinanjan90/Test-and-deployment-automation-strategies-in-GHCP into it
 ```
 
 2. Copilot should suggest:
 
 ```bash
+mkdir TechConnect2026
+cd TechConnect2026
 git clone https://github.com/Trinanjan90/Test-and-deployment-automation-strategies-in-GHCP.git
 cd Test-and-deployment-automation-strategies-in-GHCP
-```
-
-3. Alternatively, if you have the local files, ask Copilot:
-
-```
-@workspace Open the folder containing the aks-store-quickstart.yaml file
 ```
 
 </details>
@@ -179,19 +170,25 @@ cd Test-and-deployment-automation-strategies-in-GHCP
 <details>
 <summary><b>Step 6: Authenticate to Azure using Azure CLI in terminal</b></summary>
 
-1. Follow the below command:
+1. Run the following command to login to Azure:
 
 ```bash
-az login --user "<username from resources tab> --password "<password from resources tab>"
+az login --use-device-code
 ```
 
-3. After successful login, verify your subscription:
+2. A code will be displayed in the terminal. Open https://microsoft.com/devicelogin in your browser and enter the code.
+
+3. Sign in with your **Username** and **Temporary Access Password** from the **Resources tab**.
+
+4. When prompted with **"Are you trying to sign in to Microsoft Azure CLI?"**, click **Continue**.
+
+5. After successful login, verify your subscription from the VS Code Terminal:
 
 ```bash
 az account show
 ```
 
-4. If you have multiple subscriptions, set the correct one:
+6. If you have multiple subscriptions, set the correct one:
 
 ```bash
 az account set --subscription "<subscription-id>"
