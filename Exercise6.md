@@ -39,9 +39,12 @@ Write Automation Test Scripts for the User Stories for the solution.
      Design Playwright Automation Test Cases for the attached functional TestCases JSON file using instructions attached. URL of the application is <<Your Application URL>>.
      ```
 
-   - Also attach:
-     - `AutomationScriptCreationInstructions` from the **Instructions File** in the Testing folder.
-     - The relevant **UserStory**.
+   - Also attach the following to the prompt:
+     - `AutomationScriptCreationInstructions` from the **Instructions File** in the Testing folder of the repository as shown below:
+         <img width="592" height="242" alt="image" src="https://github.com/user-attachments/assets/e065bb7c-e5bd-4efe-8e34-48dd0a5ac6cc" />
+
+     - The relevant Test Case.JSON file as generated in Excercise 5.
+       
 
    - This will create all necessary Playwright UI Automation Test Cases.  
      ![Automation Prompt](image-8.png)

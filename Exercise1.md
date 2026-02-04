@@ -15,7 +15,7 @@ In this exercise, you will set up your development environment with all necessar
 
    <img width="217" height="241" alt="image" src="https://github.com/user-attachments/assets/866cd0c9-de08-4aad-8859-08273bf0c4e4" />
 
-5. Continue with GHE.com login option in VS Code
+5. "Continue with GitHub" login option should be selected in VS Code.
 6  Authenticate profile through SSO portal 
 7. Verify GitHub Copilot is active by looking for the Copilot icon in the bottom right status bar.
 8. Open GitHub Copilot Chat by pressing `Ctrl+Alt+I` or clicking the chat icon in the sidebar.
