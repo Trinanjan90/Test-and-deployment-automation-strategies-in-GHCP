@@ -8,10 +8,10 @@ In this exercise, you will deploy the 4-microservice application to your AKS clu
 1. Open a terminal in VS Code if not already visible:
    - Go to **View** → **Terminal** (or press `` Ctrl+` ``)
 
-2. Navigate to the folder where you cloned the lab repository:
+2. Navigate to the folder where you cloned the lab repository (if not already done)
 
 ```bash
-cd <path-to-cloned-repo>/Test-and-deployment-automation-strategies-in-GHCP
+cd <path-to-cloned-repo>
 ```
 
 3. Navigate to the manifest directory:
