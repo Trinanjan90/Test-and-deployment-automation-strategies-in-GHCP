@@ -117,12 +117,6 @@ Client Version: v1.29.0
 Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
 ```
 
-4. Test kubectl is working:
-
-```powershell
-kubectl cluster-info
-```
-
 > [!NOTE]
 > If kubectl command is not recognized, close and reopen your terminal to refresh the PATH environment variable.
 
