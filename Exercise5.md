@@ -5,7 +5,15 @@ Write Functional Test Cases for the User Stories for the solution.
 
 ### Steps
 
-1. **Open GitHub Copilot Chat Mode and switch to Agent Mode.**  
+1. a. First Click on Open Folder 
+      <img width="252" height="136" alt="image" src="https://github.com/user-attachments/assets/df719f87-0125-4aee-9e69-fc24e220eed4" />
+     
+     
+     
+     and then select C:\Users\Admin\TechConnect2026 
+
+
+   **Open GitHub Copilot Chat Mode and switch to Agent Mode.**  
    ![Chat Mode](image.png)
 
 2. **Type the Prompt:**
